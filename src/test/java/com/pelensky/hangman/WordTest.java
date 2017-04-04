@@ -16,5 +16,12 @@ public class WordTest {
     public void takesAWord(){
         Assert.assertEquals("Hello", word.word);
     }
+
+    @Test
+    public void showsCharacters(){
+        word.setUnderscoresForCharacters();
+        Assert.assertEquals("_____", word.showCharacters());
+
+    }
 }
 

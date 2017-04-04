@@ -1,7 +1,5 @@
 package com.pelensky.hangman;
 
-import sun.plugin2.main.client.LiveConnectSupport;
-
 class Game {
 
     Word word;

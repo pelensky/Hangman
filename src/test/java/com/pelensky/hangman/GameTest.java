@@ -26,4 +26,6 @@ public class GameTest {
     public void takesANumberOfLives(){
         Assert.assertEquals(lives, game.lives);
     }
+
+
 }

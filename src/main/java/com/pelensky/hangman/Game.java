@@ -1,11 +1,13 @@
 package com.pelensky.hangman;
 
+import sun.plugin2.main.client.LiveConnectSupport;
+
 class Game {
 
-    String word;
-    int lives;
+    Word word;
+    Lives lives;
 
-    Game(String word, int lives){
+    Game(Word word, Lives lives){
         this.word = word;
         this.lives = lives;
     }

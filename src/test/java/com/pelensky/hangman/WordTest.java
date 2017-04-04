@@ -29,5 +29,11 @@ public class WordTest {
         word.guessLetter('h');
         Assert.assertEquals("H____", word.showCharacters());
     }
+
+    @Test
+    public void guessIncorrectLetter(){
+        word.guessLetter('d');
+        Assert.assertEquals("_____", word.showCharacters());
+    }
 }
 

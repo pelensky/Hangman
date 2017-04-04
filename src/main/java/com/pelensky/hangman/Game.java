@@ -1,18 +1,12 @@
 package com.pelensky.hangman;
 
-/**
- * Created by dan on 4/4/17.
- */
-public class Game {
+class Game {
 
-    private final String word;
+    String word;
+    int lives;
 
-    public Game(String word) {
+    Game(String word, int lives){
         this.word = word;
+        this.lives = lives;
     }
-
-    public boolean isGameOver(){
-        return true;
-    }
-
 }

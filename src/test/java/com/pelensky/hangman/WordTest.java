@@ -10,6 +10,7 @@ public class WordTest {
     @Before
     public void setUp(){
         word = new Word("Hello");
+        word.setUnderscoresForCharacters();
     }
 
     @Test
@@ -19,9 +20,14 @@ public class WordTest {
 
     @Test
     public void showsCharacters(){
-        word.setUnderscoresForCharacters();
         Assert.assertEquals("_____", word.showCharacters());
 
+    }
+
+    @Test
+    public void guessCorrectLetter(){
+        word.guessLetter('h');
+        Assert.assertEquals("H____", word.showCharacters());
     }
 }
 

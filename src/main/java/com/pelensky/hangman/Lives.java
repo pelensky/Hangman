@@ -6,4 +6,8 @@ class Lives {
     Lives(int lives){
         this.lives = lives;
     }
+
+    void reduceLifeCount(){
+        this.lives -= 1;
+    }
 }

@@ -30,9 +30,9 @@ class Word {
     }
 
     private void replaceCharacter(char letter) {
-        for (int y = 0; y < this.word.length(); y++) {
-            if (this.word.charAt(y) == letter) {
-                this.characters[y] = letter;
+        for (int x = 0; x < this.word.length(); x++) {
+            if (this.word.charAt(x) == letter) {
+                this.characters[x] = letter;
             }
         }
     }

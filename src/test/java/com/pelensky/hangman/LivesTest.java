@@ -10,4 +10,10 @@ public class LivesTest {
     public void takesANumber(){
         Assert.assertEquals(5, lives.lives);
     }
+
+    @Test
+    public void reduceLifeCountByOne(){
+        lives.reduceLifeCount();
+        Assert.assertEquals(4, lives.lives);
+    }
 }

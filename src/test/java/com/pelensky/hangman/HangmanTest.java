@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.util.Scanner;
 import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -90,7 +91,6 @@ public class HangmanTest {
     }
 
     @Test
-
     public void checkGameLost(){
         ByteArrayInputStream input1 = new ByteArrayInputStream("a\n".getBytes());
         hangman.takeGuess(input1);
@@ -105,6 +105,12 @@ public class HangmanTest {
         Assert.assertTrue(hangman.gameLost());
     }
 
+    @Test
+    public void testGameLoop(){
+        Scanner scanner = new Scanner("h e l o");
+        hangman.gameLoop(scanner);
+        Assert.assertThat(outContent.toString(), containsString("You won!\n"));
+    }
 
 
 

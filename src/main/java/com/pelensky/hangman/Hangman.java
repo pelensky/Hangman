@@ -7,6 +7,8 @@ import java.util.Scanner;
 class Hangman {
 
     private Game game;
+    Scanner scanner = new Scanner(System.in);
+
 
     Hangman(Game game){
         this.game = game;
@@ -44,10 +46,10 @@ class Hangman {
         return this.game.gameLost();
     }
 
-    void gameLoop(){
+    void gameLoop(Scanner scanner){
         welcomeMessage();
         while (gameInProgress()){
-            playGame();
+            playGame(scanner);
             if (gameWon()){
                 printWonGame();
                 break;
@@ -63,16 +65,15 @@ class Hangman {
         printTakeAGuess();
     }
 
-    private void getUserInput(){
-        Scanner scanner = new Scanner(System.in);
+    private void getUserInput(Scanner scanner){
         String guess = scanner.next();
         ByteArrayInputStream input = new ByteArrayInputStream(guess.getBytes());
         takeGuess(input);
     }
 
-    private void playGame() {
+    private void playGame(Scanner scanner) {
         printInstructions();
-        getUserInput();
+        getUserInput(scanner);
     }
 
 

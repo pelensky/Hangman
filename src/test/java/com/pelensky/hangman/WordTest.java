@@ -15,7 +15,7 @@ public class WordTest {
 
     @Test
     public void takesAWord(){
-        Assert.assertEquals("Hello", word.word);
+        Assert.assertEquals("HELLO", word.word);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class WordTest {
     public void guessMultipleLetters(){
         word.guessLetter('h');
         word.guessLetter('l');
-        Assert.assertEquals("H_ll_", word.showCharacters());
+        Assert.assertEquals("H_LL_", word.showCharacters());
     }
 
 }

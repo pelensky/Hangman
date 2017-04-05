@@ -5,7 +5,7 @@ class Word {
     private char[] characters;
 
     Word(String word) {
-        this.word = word;
+        this.word = word.toUpperCase();
         this.characters = new char[this.word.length()];
     }
 
@@ -20,6 +20,7 @@ class Word {
     }
 
     void guessLetter(char letter) {
+        letter = Character.toUpperCase(letter);
         if (containsLetter(letter)){
             replaceCharacter(letter);
         }

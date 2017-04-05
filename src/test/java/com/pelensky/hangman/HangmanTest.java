@@ -3,6 +3,10 @@ package com.pelensky.hangman;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import sun.misc.IOUtils;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 public class HangmanTest {
     private Hangman hangman;
@@ -40,11 +44,12 @@ public class HangmanTest {
         Assert.assertEquals(1, hangman.cycles);
     }
 
-//    @Test
-//    public void takesALetter(){
-//        hangman.startGame();
-//        Assert.assertTrue(hangman.takeGuess("h\n"));
-//    }
+    @Test
+    public void takesALetter(){
+        hangman.startGame();
+        ByteArrayInputStream input = new ByteArrayInputStream("h\n".getBytes());
+        Assert.assertTrue(hangman.takeGuess(input));
+    }
 
 
 

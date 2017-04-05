@@ -66,13 +66,13 @@ public class HangmanTest {
 
     @Test
     public void showWord(){
-        hangman.playGame();
+        hangman.printInstructions();
         Assert.assertThat(outContent.toString(), containsString("The word is: _____\n"));
     }
 
     @Test
     public void showOptionToTakeGuess(){
-        hangman.playGame();
+        hangman.printInstructions();
         Assert.assertThat(outContent.toString(), containsString("Take a guess!\n"));
     }
 
@@ -87,7 +87,9 @@ public class HangmanTest {
         ByteArrayInputStream input4 = new ByteArrayInputStream("o\n".getBytes());
         hangman.takeGuess(input4);
         Assert.assertTrue(hangman.gameWon());
-    }@Test
+    }
+
+    @Test
 
     public void checkGameLost(){
         ByteArrayInputStream input1 = new ByteArrayInputStream("a\n".getBytes());

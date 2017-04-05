@@ -7,7 +7,6 @@ import java.util.Scanner;
 class Hangman {
 
     private Game game;
-    PrintStream output;
 
     Hangman(Game game){
         this.game = game;
@@ -36,28 +35,30 @@ class Hangman {
     }
 
     boolean gameWon(){
+        printWonGame();
         return this.game.gameWon();
     }
 
     boolean gameLost(){
+        printLostGame();
         return this.game.gameLost();
     }
-
 
     void gameLoop(){
         welcomeMessage();
         while (gameInProgress()){
             playGame();
-            getUserInput();
             if (gameWon()){
+                printWonGame();
                 break;
             } else if (gameLost()) {
+                printLostGame();
                 break;
             }
         }
     }
 
-    void playGame(){
+    void printInstructions(){
         printShowWord();
         printTakeAGuess();
     }
@@ -67,6 +68,11 @@ class Hangman {
         String guess = scanner.next();
         ByteArrayInputStream input = new ByteArrayInputStream(guess.getBytes());
         takeGuess(input);
+    }
+
+    private void playGame() {
+        printInstructions();
+        getUserInput();
     }
 
 
@@ -82,6 +88,17 @@ class Hangman {
     private void printTakeAGuess(){
         System.out.println("Take a guess!");
     }
+
+    private void printWonGame(){
+        printShowWord();
+        System.out.println("You won!");
+    }
+
+    private void printLostGame(){
+        printShowWord();
+        System.out.println("You lost");
+    }
+
 
 
 }

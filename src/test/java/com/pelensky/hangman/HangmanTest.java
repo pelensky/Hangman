@@ -60,24 +60,6 @@ public class HangmanTest {
     }
 
     @Test
-    public void displaysWelcomeMessage(){
-        hangman.welcomeMessage();
-        Assert.assertThat(outContent.toString(), containsString("Welcome to Hangman!\n"));
-    }
-
-    @Test
-    public void showWord(){
-        hangman.printInstructions();
-        Assert.assertThat(outContent.toString(), containsString("The word is: _____\n"));
-    }
-
-    @Test
-    public void showOptionToTakeGuess(){
-        hangman.printInstructions();
-        Assert.assertThat(outContent.toString(), containsString("Take a guess!\n"));
-    }
-
-    @Test
     public void checkGameWon(){
         ByteArrayInputStream input1 = new ByteArrayInputStream("h\n".getBytes());
         hangman.takeGuess(input1);
@@ -103,6 +85,27 @@ public class HangmanTest {
         ByteArrayInputStream input5 = new ByteArrayInputStream("f\n".getBytes());
         hangman.takeGuess(input5);
         Assert.assertTrue(hangman.gameLost());
+    }
+
+    @Test
+    public void displaysWelcomeMessage(){
+        Scanner scanner = new Scanner("h e l o");
+        hangman.gameLoop(scanner);
+        Assert.assertThat(outContent.toString(), containsString("Welcome to Hangman!\n"));
+    }
+
+    @Test
+    public void showWord(){
+        Scanner scanner = new Scanner("h e l o");
+        hangman.gameLoop(scanner);
+        Assert.assertThat(outContent.toString(), containsString("The word is: _____\n"));
+    }
+
+    @Test
+    public void showOptionToTakeGuess(){
+        Scanner scanner = new Scanner("h e l o");
+        hangman.gameLoop(scanner);
+        Assert.assertThat(outContent.toString(), containsString("Take a guess!\n"));
     }
 
     @Test

@@ -41,5 +41,19 @@ public class GameTest {
         Assert.assertTrue(game.gameWon());
     }
 
+    @Test
+    public void checkGameLost(){
+        game.guessLetter('a');
+        game.guessLetter('b');
+        game.guessLetter('c');
+        game.guessLetter('d');
+        game.guessLetter('f');
+        Assert.assertTrue(game.gameLost());
+    }
+
+
+
+
+
 
 }

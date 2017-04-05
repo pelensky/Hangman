@@ -16,4 +16,14 @@ public class LivesTest {
         lives.reduceLifeCount();
         Assert.assertEquals(4, lives.lives);
     }
+
+    @Test
+    public void checkLivesBelowOne(){
+        lives.reduceLifeCount();
+        lives.reduceLifeCount();
+        lives.reduceLifeCount();
+        lives.reduceLifeCount();
+        lives.reduceLifeCount();
+        Assert.assertTrue(lives.checkGameLost());
+    }
 }

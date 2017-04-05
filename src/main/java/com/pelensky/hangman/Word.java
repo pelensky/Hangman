@@ -19,10 +19,13 @@ class Word {
         }
     }
 
-    void guessLetter(char letter) {
+    boolean guessLetter(char letter) {
         letter = Character.toUpperCase(letter);
         if (containsLetter(letter)){
             replaceCharacter(letter);
+            return true;
+        } else {
+            return false;
         }
     }
 

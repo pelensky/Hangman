@@ -14,7 +14,13 @@ class Game {
         return this.word.checkWordMatchesGuesses();
     }
 
+    boolean gameLost(){
+        return this.lives.checkGameLost();
+    }
+
     void guessLetter(char letter){
-        this.word.guessLetter(letter);
+        if (!this.word.guessLetter(letter)){
+            this.lives.reduceLifeCount();
+        }
     }
 }

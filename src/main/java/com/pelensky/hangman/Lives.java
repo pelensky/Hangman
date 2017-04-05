@@ -10,4 +10,9 @@ class Lives {
     void reduceLifeCount(){
         this.lives -= 1;
     }
+
+    boolean checkGameLost(){
+        return this.lives <= 0;
+    }
 }
+

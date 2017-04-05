@@ -116,7 +116,7 @@ public class HangmanTest {
     public void testGameLoopLosing(){
         Scanner scanner = new Scanner("a b c d f");
         hangman.gameLoop(scanner);
-        Assert.assertThat(outContent.toString(), containsString("You lose\n"));
+        Assert.assertThat(outContent.toString(), containsString("You lost\n"));
     }
 
 

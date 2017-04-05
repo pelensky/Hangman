@@ -40,12 +40,11 @@ public class HangmanTest {
         Assert.assertEquals(1, hangman.cycles);
     }
 
-    @Test
-    public void takesALetter(){
-        hangman.startGame();
-
-
-    }
+//    @Test
+//    public void takesALetter(){
+//        hangman.startGame();
+//        Assert.assertTrue(hangman.takeGuess("h\n"));
+//    }
 
 
 

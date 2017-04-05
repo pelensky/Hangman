@@ -9,4 +9,12 @@ class Game {
         this.word = word;
         this.lives = lives;
     }
+
+    boolean gameWon(){
+        return this.word.checkWordMatchesGuesses();
+    }
+
+    void guessLetter(char letter){
+        this.word.guessLetter(letter);
+    }
 }

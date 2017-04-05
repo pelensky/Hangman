@@ -38,4 +38,12 @@ class Word {
         }
     }
 
+    boolean checkWordMatchesGuesses(){
+        return this.word.equals(showWordCharacters());
+    }
+
+    private String showWordCharacters(){
+        return String.valueOf(this.characters);
+    }
+
 }

@@ -27,5 +27,19 @@ public class GameTest {
         Assert.assertEquals(lives, game.lives);
     }
 
+    @Test
+    public void checkGameNotWon(){
+        Assert.assertFalse(game.gameWon());
+    }
+
+    @Test
+    public void checkGameWon(){
+        game.guessLetter('h');
+        game.guessLetter('e');
+        game.guessLetter('l');
+        game.guessLetter('o');
+        Assert.assertTrue(game.gameWon());
+    }
+
 
 }

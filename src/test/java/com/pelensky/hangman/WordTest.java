@@ -43,5 +43,14 @@ public class WordTest {
         Assert.assertEquals("H_LL_", word.showCharacters());
     }
 
+    @Test
+    public void checksWordMatchesLetter(){
+        word.guessLetter('h');
+        word.guessLetter('e');
+        word.guessLetter('l');
+        word.guessLetter('o');
+        Assert.assertTrue(word.checkWordMatchesGuesses());
+    }
+
 }
 

@@ -1,10 +1,13 @@
 package com.pelensky.hangman;
 
+import java.io.InputStream;
+
 class Hangman {
 
     private Game game;
     Boolean running;
     int cycles;
+    InputStream input;
 
     Hangman(Game game){
         this.game = game;
@@ -16,6 +19,11 @@ class Hangman {
         this.running = true;
         this.cycles ++;
     }
+
+//    boolean takeGuess(InputStream input){
+//        return true;
+//    }
+
 
 
 }

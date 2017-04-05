@@ -5,12 +5,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.hamcrest.CoreMatchers.containsString;
 
 public class HangmanTest {
     private Hangman hangman;
     private Game game;
     private Word word;
     private Lives lives;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
 
     @Before
     public void setUp(){
@@ -19,6 +25,11 @@ public class HangmanTest {
         game = new Game(word, lives);
         hangman = new Hangman(game);
         hangman.startGame();
+    }
+
+    @Before
+    public void setUpStream(){
+        System.setOut(new PrintStream(outContent));
     }
 
     @Test
@@ -45,6 +56,12 @@ public class HangmanTest {
         ByteArrayInputStream input = new ByteArrayInputStream("h\n".getBytes());
         hangman.takeGuess(input);
         Assert.assertEquals(5, hangman.showLives());
+    }
+
+    @Test
+    public void displaysWelcomeMessage(){
+        hangman.welcomeMessage();
+        Assert.assertThat(outContent.toString(), containsString("Welcome to Hangman!\n"));
     }
 
 

@@ -1,13 +1,12 @@
 package com.pelensky.hangman;
 
-import sun.misc.IOUtils;
-
 import java.io.ByteArrayInputStream;
+import java.io.PrintStream;
 
 class Hangman {
 
     private Game game;
-    ByteArrayInputStream input;
+    PrintStream output;
 
     Hangman(Game game){
         this.game = game;
@@ -31,7 +30,24 @@ class Hangman {
         return this.game.showLives();
     }
 
+    private boolean gameInProgress(){
+        return showLives() >= 1;
+    }
 
 
+    void gameLoop(){
+        welcomeMessage();
+        while (gameInProgress()){
+            playGame();
+        }
+    }
+
+    private void playGame(){
+
+    }
+
+    void welcomeMessage(){
+        System.out.println("Welcome to Hangman!");
+    }
 }
 

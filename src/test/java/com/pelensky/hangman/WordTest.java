@@ -35,5 +35,13 @@ public class WordTest {
         word.guessLetter('d');
         Assert.assertEquals("_____", word.showCharacters());
     }
+
+    @Test
+    public void guessMultipleLetters(){
+        word.guessLetter('h');
+        word.guessLetter('l');
+        Assert.assertEquals("H_ll_", word.showCharacters());
+    }
+
 }
 

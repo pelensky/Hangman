@@ -1,4 +1,13 @@
 package com.pelensky.hangman;
 
-public class Hangman {
+class Hangman {
+
+    private Game game;
+
+    Hangman(Game game){
+        this.game = game;
+    }
+
+
 }
+

@@ -2,6 +2,7 @@ package com.pelensky.hangman;
 
 import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 class Hangman {
 
@@ -34,18 +35,41 @@ class Hangman {
         return showLives() >= 1;
     }
 
+    boolean gameWon(){
+        return this.game.gameWon();
+    }
+
+    boolean gameLost(){
+        return this.game.gameLost();
+    }
+
 
     void gameLoop(){
         welcomeMessage();
         while (gameInProgress()){
             playGame();
+            getUserInput();
+            if (gameWon()){
+                break;
+            } else if (gameLost()) {
+                break;
+            }
         }
     }
 
-    void  playGame(){
+    void playGame(){
         printShowWord();
         printTakeAGuess();
     }
+
+    private void getUserInput(){
+        Scanner scanner = new Scanner(System.in);
+        String guess = scanner.next();
+        ByteArrayInputStream input = new ByteArrayInputStream(guess.getBytes());
+        takeGuess(input);
+    }
+
+
 
     void welcomeMessage(){
         System.out.println("Welcome to Hangman!");

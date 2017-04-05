@@ -76,7 +76,32 @@ public class HangmanTest {
         Assert.assertThat(outContent.toString(), containsString("Take a guess!\n"));
     }
 
+    @Test
+    public void checkGameWon(){
+        ByteArrayInputStream input1 = new ByteArrayInputStream("h\n".getBytes());
+        hangman.takeGuess(input1);
+        ByteArrayInputStream input2 = new ByteArrayInputStream("e\n".getBytes());
+        hangman.takeGuess(input2);
+        ByteArrayInputStream input3 = new ByteArrayInputStream("l\n".getBytes());
+        hangman.takeGuess(input3);
+        ByteArrayInputStream input4 = new ByteArrayInputStream("o\n".getBytes());
+        hangman.takeGuess(input4);
+        Assert.assertTrue(hangman.gameWon());
+    }@Test
 
+    public void checkGameLost(){
+        ByteArrayInputStream input1 = new ByteArrayInputStream("a\n".getBytes());
+        hangman.takeGuess(input1);
+        ByteArrayInputStream input2 = new ByteArrayInputStream("b\n".getBytes());
+        hangman.takeGuess(input2);
+        ByteArrayInputStream input3 = new ByteArrayInputStream("c\n".getBytes());
+        hangman.takeGuess(input3);
+        ByteArrayInputStream input4 = new ByteArrayInputStream("d\n".getBytes());
+        hangman.takeGuess(input4);
+        ByteArrayInputStream input5 = new ByteArrayInputStream("f\n".getBytes());
+        hangman.takeGuess(input5);
+        Assert.assertTrue(hangman.gameLost());
+    }
 
 
 

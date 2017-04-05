@@ -1,13 +1,12 @@
 package com.pelensky.hangman;
 
 import java.io.ByteArrayInputStream;
-import java.io.PrintStream;
 import java.util.Scanner;
 
 class Hangman {
 
     private Game game;
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner;
 
 
     Hangman(Game game){
@@ -37,23 +36,23 @@ class Hangman {
     }
 
     boolean gameWon(){
-        printWonGame();
         return this.game.gameWon();
     }
 
     boolean gameLost(){
-        printLostGame();
         return this.game.gameLost();
     }
 
     void gameLoop(Scanner scanner){
+        startGame();
         welcomeMessage();
         while (gameInProgress()){
             playGame(scanner);
             if (gameWon()){
                 printWonGame();
                 break;
-            } else if (gameLost()) {
+            }
+            if (gameLost()) {
                 printLostGame();
                 break;
             }
@@ -74,6 +73,7 @@ class Hangman {
     private void playGame(Scanner scanner) {
         printInstructions();
         getUserInput(scanner);
+        printNumberOfLives();
     }
 
 
@@ -98,6 +98,19 @@ class Hangman {
     private void printLostGame(){
         printShowWord();
         System.out.println("You lost");
+    }
+
+    private void printNumberOfLives(){
+        System.out.println("You have " + this.game.showLives() + " lives remaining.");
+    }
+
+    public static void main(String[] args){
+        Word word = new Word("Hello");
+        Lives lives = new Lives(5);
+        Game game = new Game(word, lives);
+        Hangman hangman = new Hangman(game);
+        Scanner scanner = new Scanner(System.in);
+        hangman.gameLoop(scanner);
     }
 
 

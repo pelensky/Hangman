@@ -106,12 +106,18 @@ public class HangmanTest {
     }
 
     @Test
-    public void testGameLoop(){
+    public void testGameLoopWinning(){
         Scanner scanner = new Scanner("h e l o");
         hangman.gameLoop(scanner);
         Assert.assertThat(outContent.toString(), containsString("You won!\n"));
     }
 
+    @Test
+    public void testGameLoopLosing(){
+        Scanner scanner = new Scanner("a b c d f");
+        hangman.gameLoop(scanner);
+        Assert.assertThat(outContent.toString(), containsString("You lose\n"));
+    }
 
 
 }

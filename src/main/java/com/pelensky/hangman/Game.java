@@ -10,6 +10,10 @@ class Game {
         this.lives = lives;
     }
 
+    void newGame(){
+        this.word.setUnderscoresForCharacters();
+    }
+
     boolean gameWon(){
         return this.word.checkWordMatchesGuesses();
     }
@@ -22,5 +26,9 @@ class Game {
         if (!this.word.guessLetter(letter)){
             this.lives.reduceLifeCount();
         }
+    }
+
+    String showCharacters(){
+        return this.word.showCharacters();
     }
 }

@@ -3,10 +3,8 @@ package com.pelensky.hangman;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import sun.misc.IOUtils;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 public class HangmanTest {
     private Hangman hangman;
@@ -20,35 +18,19 @@ public class HangmanTest {
         lives = new Lives(5);
         game = new Game(word, lives);
         hangman = new Hangman(game);
-    }
-
-    @Test
-    public void doesNothingBeforeItHasBeenStarted(){
-        Assert.assertFalse(hangman.running);
-    }
-
-    @Test
-    public void gameHasHadZeroLoopsBeforeBeingStarted(){
-        Assert.assertEquals(0, hangman.cycles);
-    }
-
-    @Test
-    public void gameIsRunningWhenItStarts(){
         hangman.startGame();
-        Assert.assertTrue(hangman.running);
     }
 
     @Test
-    public void gameHasOneLoopWhenStarted(){
-        hangman.startGame();
-        Assert.assertEquals(1, hangman.cycles);
-    }
-
-    @Test
-    public void takesALetter(){
-        hangman.startGame();
+    public void returnsWordForRightLetter(){
         ByteArrayInputStream input = new ByteArrayInputStream("h\n".getBytes());
-        Assert.assertTrue(hangman.takeGuess(input));
+        Assert.assertEquals("H____", hangman.takeGuess(input));
+    }
+
+    @Test
+    public void returnsFalseForWrongLetter(){
+        ByteArrayInputStream input = new ByteArrayInputStream("a\n".getBytes());
+        Assert.assertEquals("_____", hangman.takeGuess(input));
     }
 
 

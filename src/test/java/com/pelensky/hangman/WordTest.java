@@ -52,5 +52,6 @@ public class WordTest {
         Assert.assertTrue(word.checkWordMatchesGuesses());
     }
 
+
 }
 

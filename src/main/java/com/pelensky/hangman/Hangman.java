@@ -1,27 +1,30 @@
 package com.pelensky.hangman;
 
+import sun.misc.IOUtils;
+
 import java.io.ByteArrayInputStream;
 
 class Hangman {
 
     private Game game;
-    Boolean running;
-    int cycles;
     ByteArrayInputStream input;
 
     Hangman(Game game){
         this.game = game;
-        this.running = false;
-        this.cycles = 0;
     }
 
     void startGame(){
-        this.running = true;
-        this.cycles ++;
+        this.game.newGame();
     }
 
-    boolean takeGuess(ByteArrayInputStream input){
-        return true;
+    String takeGuess(ByteArrayInputStream input){
+        char letter = (char)input.read();
+        this.game.guessLetter(letter);
+        return showCharacters();
+    }
+
+    private String showCharacters(){
+        return this.game.showCharacters();
     }
 
 

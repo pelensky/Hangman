@@ -15,6 +15,7 @@ public class GameTest {
     word = new Word("Hello");
     lives = new Lives(5);
     game = new Game(word, lives);
+    game.newGame();
     }
 
     @Test
@@ -51,9 +52,12 @@ public class GameTest {
         Assert.assertTrue(game.gameLost());
     }
 
-
-
-
+    @Test
+    public void showCurrentStatusOfWord(){
+        game.guessLetter('h');
+        game.guessLetter('l');
+        Assert.assertEquals("H_LL_", game.showCharacters());
+    }
 
 
 }

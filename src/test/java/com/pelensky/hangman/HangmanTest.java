@@ -70,6 +70,12 @@ public class HangmanTest {
         Assert.assertThat(outContent.toString(), containsString("The word is: _____\n"));
     }
 
+    @Test
+    public void showOptionToTakeGuess(){
+        hangman.playGame();
+        Assert.assertThat(outContent.toString(), containsString("Take a guess!\n"));
+    }
+
 
 
 

@@ -43,15 +43,20 @@ class Hangman {
     }
 
     void  playGame(){
-        showWord();
+        printShowWord();
+        printTakeAGuess();
     }
 
     void welcomeMessage(){
         System.out.println("Welcome to Hangman!");
     }
 
-    private void showWord(){
+    private void printShowWord(){
         System.out.println("The word is: " + showCharacters() );
+    }
+
+    private void printTakeAGuess(){
+        System.out.println("Take a guess!");
     }
 
 

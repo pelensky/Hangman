@@ -42,12 +42,18 @@ class Hangman {
         }
     }
 
-    private void playGame(){
-
+    void  playGame(){
+        showWord();
     }
 
     void welcomeMessage(){
         System.out.println("Welcome to Hangman!");
     }
+
+    private void showWord(){
+        System.out.println("The word is: " + showCharacters() );
+    }
+
+
 }
 

@@ -27,6 +27,10 @@ class Hangman {
         return this.game.showCharacters();
     }
 
+    int showLives(){
+        return this.game.showLives();
+    }
+
 
 
 }

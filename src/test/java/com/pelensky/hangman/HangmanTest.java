@@ -22,15 +22,29 @@ public class HangmanTest {
     }
 
     @Test
-    public void returnsWordForRightLetter(){
+    public void wordChangedForRightGuess(){
         ByteArrayInputStream input = new ByteArrayInputStream("h\n".getBytes());
         Assert.assertEquals("H____", hangman.takeGuess(input));
     }
 
     @Test
-    public void returnsFalseForWrongLetter(){
+    public void wordNotChangedForWrongGuess(){
         ByteArrayInputStream input = new ByteArrayInputStream("a\n".getBytes());
         Assert.assertEquals("_____", hangman.takeGuess(input));
+    }
+
+    @Test
+    public void livesGoDownForWrongGuess(){
+        ByteArrayInputStream input = new ByteArrayInputStream("a\n".getBytes());
+        hangman.takeGuess(input);
+        Assert.assertEquals(4, hangman.showLives());
+    }
+
+    @Test
+    public void livesStayTheSameForRightGuess(){
+        ByteArrayInputStream input = new ByteArrayInputStream("h\n".getBytes());
+        hangman.takeGuess(input);
+        Assert.assertEquals(5, hangman.showLives());
     }
 
 

@@ -14,5 +14,9 @@ class Lives {
     boolean checkGameLost(){
         return this.lives <= 0;
     }
+
+    int showLives(){
+        return this.lives;
+    }
 }
 

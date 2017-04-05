@@ -31,4 +31,8 @@ class Game {
     String showCharacters(){
         return this.word.showCharacters();
     }
+
+    int showLives(){
+        return this.lives.showLives();
+    }
 }

@@ -24,6 +24,6 @@ public class LivesTest {
         lives.reduceLifeCount();
         lives.reduceLifeCount();
         lives.reduceLifeCount();
-        Assert.assertTrue(lives.checkGameLost());
+        Assert.assertTrue(lives.hasNoLivesLeft());
     }
 }

@@ -14,11 +14,6 @@ public class WordTest {
     }
 
     @Test
-    public void takesAWord(){
-        Assert.assertEquals("HELLO", word.word);
-    }
-
-    @Test
     public void showsCharacters(){
         Assert.assertEquals("_____", word.showCharacters());
 
@@ -50,6 +45,13 @@ public class WordTest {
         word.guessLetter('l');
         word.guessLetter('o');
         Assert.assertTrue(word.checkWordMatchesGuesses());
+    }
+
+    @Test
+    public void randomWord(){
+        Word randomWord = new Word();
+        randomWord.chooseRandomWord();
+        Assert.assertNotEquals("Hello", randomWord.word);
     }
 
 

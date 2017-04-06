@@ -11,7 +11,7 @@ class Lives {
         this.lives -= 1;
     }
 
-    boolean checkGameLost(){
+    boolean hasNoLivesLeft(){
         return this.lives <= 0;
     }
 

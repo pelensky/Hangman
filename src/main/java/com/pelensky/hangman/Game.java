@@ -11,7 +11,7 @@ class Game {
     }
 
     void newGame(){
-        this.word.setUnderscoresForCharacters();
+       this.word.setUnderscoresForCharacters();
     }
 
     boolean gameWon(){
@@ -19,7 +19,7 @@ class Game {
     }
 
     boolean gameLost(){
-        return this.lives.checkGameLost();
+        return this.lives.hasNoLivesLeft();
     }
 
     void guessLetter(char letter){
@@ -32,6 +32,9 @@ class Game {
         return this.word.showCharacters();
     }
 
+    String showWord() {
+        return this.word.showWord();
+    }
     int showLives(){
         return this.lives.showLives();
     }

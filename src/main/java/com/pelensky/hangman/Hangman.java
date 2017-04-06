@@ -13,6 +13,7 @@ class Hangman {
 
     void startGame(){
         this.game.newGame();
+        printWelcomeMessage();
     }
 
     String takeGuess(ByteArrayInputStream input){
@@ -25,6 +26,9 @@ class Hangman {
         return this.game.showCharacters();
     }
 
+    private String showWord() {
+        return this.game.showWord();
+    }
     int showLives(){
         return this.game.showLives();
     }
@@ -37,13 +41,12 @@ class Hangman {
         return this.game.gameWon();
     }
 
-    boolean gameLost(){
+       boolean gameLost(){
         return this.game.gameLost();
     }
 
     void gameLoop(Scanner scanner){
         startGame();
-        printWelcomeMessage();
         while (gameInProgress()){
             playGame(scanner);
             if (gameWon()){
@@ -74,8 +77,6 @@ class Hangman {
         printNumberOfLives();
     }
 
-
-
     private void printWelcomeMessage(){
         System.out.println("Welcome to Hangman!");
     }
@@ -84,17 +85,21 @@ class Hangman {
         System.out.println("The word is: " + showCharacters() );
     }
 
+    private void printShowFullWord(){
+        System.out.println("The word was: " + showWord() );
+    }
+
     private void printTakeAGuess(){
         System.out.println("Take a guess!");
     }
 
     private void printWonGame(){
-        printShowWord();
+        printShowFullWord();
         System.out.println("You won!");
     }
 
     private void printLostGame(){
-        printShowWord();
+        printShowFullWord();
         System.out.println("You lost");
     }
 
@@ -103,15 +108,13 @@ class Hangman {
     }
 
     public static void main(String[] args){
-        Word word = new Word("Hello");
+        Word word = new Word();
         Lives lives = new Lives(5);
         Game game = new Game(word, lives);
         Hangman hangman = new Hangman(game);
         Scanner scanner = new Scanner(System.in);
         hangman.gameLoop(scanner);
     }
-
-
 
 }
 

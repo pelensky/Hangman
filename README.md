@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/pelensky/Hangman.svg?branch=master)](https://travis-ci.org/pelensky/Hangman)
+
+
 ## Hangman
 
 ## Instructions

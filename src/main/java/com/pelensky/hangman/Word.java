@@ -20,11 +20,11 @@ class Word {
         setUnderscoresForCharacters();
    }
 
-    String showWord(){
+    String returnWord(){
        return this.word;
     }
 
-    String showCharacters() {
+    String returnCharacters() {
         return String.valueOf(this.characters);
     }
 
@@ -34,16 +34,16 @@ class Word {
         }
     }
 
-    boolean guessLetter(char letter) {
+    boolean isGuessCorrect(char letter) {
         letter = Character.toUpperCase(letter);
-        if (containsLetter(letter)){
+        if (doesWordContainLetter(letter)){
             replaceCharacter(letter);
            }
-           return containsLetter(letter);
+           return doesWordContainLetter(letter);
 
     }
 
-    private boolean containsLetter(char letter) {
+    private boolean doesWordContainLetter(char letter) {
         return (this.word.contains(String.valueOf(letter)));
     }
 
@@ -55,11 +55,11 @@ class Word {
         }
     }
 
-    boolean checkWordMatchesGuesses(){
-        return this.word.equals(showWordCharacters());
+    boolean doesWordMatchGuesses(){
+        return this.word.equals(returnWordCharacters());
     }
 
-    private String showWordCharacters(){
+    private String returnWordCharacters(){
         return String.valueOf(this.characters);
     }
 

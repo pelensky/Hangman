@@ -15,7 +15,7 @@ class Lives {
         return this.lives <= 0;
     }
 
-    int showLives(){
+    int returnLives(){
         return this.lives;
     }
 }

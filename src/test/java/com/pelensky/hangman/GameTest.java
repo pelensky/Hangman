@@ -30,7 +30,7 @@ public class GameTest {
 
     @Test
     public void checkGameNotWon(){
-        Assert.assertFalse(game.gameWon());
+        Assert.assertFalse(game.isGameWon());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class GameTest {
         game.guessLetter('e');
         game.guessLetter('l');
         game.guessLetter('o');
-        Assert.assertTrue(game.gameWon());
+        Assert.assertTrue(game.isGameWon());
     }
 
     @Test
@@ -49,14 +49,14 @@ public class GameTest {
         game.guessLetter('c');
         game.guessLetter('d');
         game.guessLetter('f');
-        Assert.assertTrue(game.gameLost());
+        Assert.assertTrue(game.isGameLost());
     }
 
     @Test
     public void showCurrentStatusOfWord(){
         game.guessLetter('h');
         game.guessLetter('l');
-        Assert.assertEquals("H_LL_", game.showCharacters());
+        Assert.assertEquals("H_LL_", game.returnCharacters());
     }
 
 

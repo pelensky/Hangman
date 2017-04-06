@@ -14,28 +14,28 @@ class Game {
        this.word.setUnderscoresForCharacters();
     }
 
-    boolean gameWon(){
-        return this.word.checkWordMatchesGuesses();
+    boolean isGameWon(){
+        return this.word.doesWordMatchGuesses();
     }
 
-    boolean gameLost(){
+    boolean isGameLost(){
         return this.lives.hasNoLivesLeft();
     }
 
     void guessLetter(char letter){
-        if (!this.word.guessLetter(letter)){
+        if (!this.word.isGuessCorrect(letter)){
             this.lives.reduceLifeCount();
         }
     }
 
-    String showCharacters(){
-        return this.word.showCharacters();
+    String returnCharacters(){
+        return this.word.returnCharacters();
     }
 
-    String showWord() {
-        return this.word.showWord();
+    String returnWord() {
+        return this.word.returnWord();
     }
-    int showLives(){
-        return this.lives.showLives();
+    int returnLives(){
+        return this.lives.returnLives();
     }
 }

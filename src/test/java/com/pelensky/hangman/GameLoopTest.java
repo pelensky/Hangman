@@ -49,14 +49,14 @@ public class GameLoopTest {
     public void livesGoDownForWrongGuess(){
         ByteArrayInputStream input = new ByteArrayInputStream("a\n".getBytes());
         gameLoop.takeGuess(input);
-        Assert.assertEquals(4, gameLoop.showLives());
+        Assert.assertEquals(4, gameLoop.returnLives());
     }
 
     @Test
     public void livesStayTheSameForRightGuess(){
         ByteArrayInputStream input = new ByteArrayInputStream("h\n".getBytes());
         gameLoop.takeGuess(input);
-        Assert.assertEquals(5, gameLoop.showLives());
+        Assert.assertEquals(5, gameLoop.returnLives());
     }
 
     @Test
@@ -69,7 +69,7 @@ public class GameLoopTest {
         gameLoop.takeGuess(input3);
         ByteArrayInputStream input4 = new ByteArrayInputStream("o\n".getBytes());
         gameLoop.takeGuess(input4);
-        Assert.assertTrue(gameLoop.gameWon());
+        Assert.assertTrue(gameLoop.isGameWon());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class GameLoopTest {
         gameLoop.takeGuess(input4);
         ByteArrayInputStream input5 = new ByteArrayInputStream("f\n".getBytes());
         gameLoop.takeGuess(input5);
-        Assert.assertTrue(gameLoop.gameLost());
+        Assert.assertTrue(gameLoop.isGameLost());
     }
 
     @Test

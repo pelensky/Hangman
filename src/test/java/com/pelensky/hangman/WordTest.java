@@ -15,36 +15,36 @@ public class WordTest {
 
     @Test
     public void showsCharacters(){
-        Assert.assertEquals("_____", word.showCharacters());
+        Assert.assertEquals("_____", word.returnCharacters());
 
     }
 
     @Test
     public void guessCorrectLetter(){
-        word.guessLetter('h');
-        Assert.assertEquals("H____", word.showCharacters());
+        word.isGuessCorrect('h');
+        Assert.assertEquals("H____", word.returnCharacters());
     }
 
     @Test
     public void guessIncorrectLetter(){
-        word.guessLetter('d');
-        Assert.assertEquals("_____", word.showCharacters());
+        word.isGuessCorrect('d');
+        Assert.assertEquals("_____", word.returnCharacters());
     }
 
     @Test
     public void guessMultipleLetters(){
-        word.guessLetter('h');
-        word.guessLetter('l');
-        Assert.assertEquals("H_LL_", word.showCharacters());
+        word.isGuessCorrect('h');
+        word.isGuessCorrect('l');
+        Assert.assertEquals("H_LL_", word.returnCharacters());
     }
 
     @Test
     public void checksWordMatchesLetter(){
-        word.guessLetter('h');
-        word.guessLetter('e');
-        word.guessLetter('l');
-        word.guessLetter('o');
-        Assert.assertTrue(word.checkWordMatchesGuesses());
+        word.isGuessCorrect('h');
+        word.isGuessCorrect('e');
+        word.isGuessCorrect('l');
+        word.isGuessCorrect('o');
+        Assert.assertTrue(word.doesWordMatchGuesses());
     }
 
     @Test

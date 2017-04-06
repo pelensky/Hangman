@@ -19,53 +19,49 @@ class GameLoop {
     String takeGuess(ByteArrayInputStream input){
         char letter = (char)input.read();
         this.game.guessLetter(letter);
-        return showCharacters();
+        return returnCharacters();
     }
 
-    private String showCharacters(){
-        return this.game.showCharacters();
+    private String returnCharacters(){
+        return this.game.returnCharacters();
     }
 
-    private String showWord() {
-        return this.game.showWord();
-    }
-    int showLives(){
-        return this.game.showLives();
+    private String returnWord() {
+        return this.game.returnWord();
     }
 
-    private boolean gameInProgress(){
-        return showLives() >= 1;
+    int returnLives(){
+        return this.game.returnLives();
     }
 
-    boolean gameWon(){
-        return this.game.gameWon();
+    private boolean isGameInProgress(){
+        return returnLives() >= 1;
     }
 
-    boolean gameLost(){
-        return this.game.gameLost();
+    boolean isGameWon(){
+        return this.game.isGameWon();
+    }
+
+    boolean isGameLost(){
+        return this.game.isGameLost();
     }
 
     void playGameLoop(Scanner scanner){
         startGame();
-        while (gameInProgress()){
+        while (isGameInProgress()){
             playGame(scanner);
-            if (gameWon()){
+            if (isGameWon()){
                 printWonGame();
                 break;
             }
-            if (gameLost()) {
+            if (isGameLost()) {
                 printLostGame();
                 break;
             }
         }
     }
 
-    private void printInstructions(){
-        printShowWord();
-        printTakeAGuess();
-    }
-
-    private void getUserInput(Scanner scanner){
+      private void getUserInput(Scanner scanner){
         String guess = scanner.next();
         ByteArrayInputStream input = new ByteArrayInputStream(guess.getBytes());
         takeGuess(input);
@@ -81,12 +77,17 @@ class GameLoop {
         System.out.println("Welcome to Hangman!");
     }
 
+    private void printInstructions(){
+        printShowWord();
+        printTakeAGuess();
+    }
+
     private void printShowWord(){
-        System.out.println("The word is: " + showCharacters() );
+        System.out.println("The word is: " + returnCharacters() );
     }
 
     private void printShowFullWord(){
-        System.out.println("The word was: " + showWord() );
+        System.out.println("The word was: " + returnWord() );
     }
 
     private void printTakeAGuess(){
@@ -104,7 +105,7 @@ class GameLoop {
     }
 
     private void printNumberOfLives(){
-        System.out.println("You have " + this.game.showLives() + " lives remaining.");
+        System.out.println("You have " + this.game.returnLives() + " lives remaining.");
     }
 
 }

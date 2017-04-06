@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/github/pelensky/Hangman/badge.svg?branch=master)](https://coveralls.io/github/pelensky/Hangman?branch=master)
 [![Build Status](https://travis-ci.org/pelensky/Hangman.svg?branch=master)](https://travis-ci.org/pelensky/Hangman)
 
 

@@ -1,6 +1,10 @@
 package com.pelensky.hangman;
 
 class Word {
+    public String getWord() {
+        return word;
+    }
+
     String word;
     private char[] characters;
     private String[] wordList = {"Rat", "Mouse", "Hamster", "Squirrel", "Chinchilla", "Gerbil", "Beaver", "Gopher", "Lemming", "Capybara" };
@@ -38,9 +42,8 @@ class Word {
         letter = Character.toUpperCase(letter);
         if (doesWordContainLetter(letter)){
             replaceCharacter(letter);
-           }
-           return doesWordContainLetter(letter);
-
+        }
+        return doesWordContainLetter(letter);
     }
 
     private boolean doesWordContainLetter(char letter) {

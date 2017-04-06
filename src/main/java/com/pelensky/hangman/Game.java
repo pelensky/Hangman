@@ -35,6 +35,7 @@ class Game {
     String returnWord() {
         return this.word.returnWord();
     }
+
     int returnLives(){
         return this.lives.returnLives();
     }

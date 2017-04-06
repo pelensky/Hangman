@@ -5,12 +5,9 @@ import java.util.Scanner;
 class Hangman {
 
     public static void main(String[] args){
-        Word word = new Word();
-        Lives lives = new Lives(5);
-        Game game = new Game(word, lives);
+        Game game = new Game(new Word(), new Lives(5));
         GameLoop gameLoop = new GameLoop(game);
-        Scanner scanner = new Scanner(System.in);
-        gameLoop.playGameLoop(scanner);
+        gameLoop.playGameLoop(new Scanner(System.in));
     }
 
 }

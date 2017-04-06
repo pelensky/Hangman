@@ -1,20 +1,22 @@
 package com.pelensky.hangman;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LivesTest {
     private Lives lives = new Lives(5);
 
     @Test
     public void takesANumber(){
-        Assert.assertEquals(5, lives.lives);
+        assertEquals(5, lives.lives);
     }
 
     @Test
     public void reduceLifeCountByOne(){
         lives.reduceLifeCount();
-        Assert.assertEquals(4, lives.lives);
+        assertEquals(4, lives.lives);
     }
 
     @Test
@@ -24,6 +26,6 @@ public class LivesTest {
         lives.reduceLifeCount();
         lives.reduceLifeCount();
         lives.reduceLifeCount();
-        Assert.assertTrue(lives.hasNoLivesLeft());
+        assertTrue(lives.hasNoLivesLeft());
     }
 }

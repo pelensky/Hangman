@@ -5,107 +5,106 @@ import java.util.Scanner;
 
 class GameLoop {
 
-    private Game game;
+  private Game game;
 
-    GameLoop(Game game){
-        this.game = game;
+  GameLoop(Game game) {
+    this.game = game;
+  }
+
+  void startGame() {
+    this.game.newGame();
+    printWelcomeMessage();
+  }
+
+  String takeGuess(ByteArrayInputStream input) {
+    char letter = (char) input.read();
+    this.game.guessLetter(letter);
+    return returnCharacters();
+  }
+
+  private String returnCharacters() {
+    return this.game.returnCharacters();
+  }
+
+  private String returnWord() {
+    return this.game.returnWord();
+  }
+
+  int returnLives() {
+    return this.game.returnLives();
+  }
+
+  private boolean isGameInProgress() {
+    return returnLives() >= 1;
+  }
+
+  boolean isGameWon() {
+    return this.game.isGameWon();
+  }
+
+  boolean isGameLost() {
+    return this.game.isGameLost();
+  }
+
+  void playGameLoop(Scanner scanner) {
+    startGame();
+    while (isGameInProgress()) {
+      playGame(scanner);
+      if (isGameWon()) {
+        printWonGame();
+        break;
+      }
+      if (isGameLost()) {
+        printLostGame();
+        break;
+      }
     }
+  }
 
-    void startGame(){
-        this.game.newGame();
-        printWelcomeMessage();
-    }
+  private void getUserInput(Scanner scanner) {
+    String guess = scanner.next();
+    ByteArrayInputStream input = new ByteArrayInputStream(guess.getBytes());
+    takeGuess(input);
+  }
 
-    String takeGuess(ByteArrayInputStream input){
-        char letter = (char)input.read();
-        this.game.guessLetter(letter);
-        return returnCharacters();
-    }
+  private void playGame(Scanner scanner) {
+    printInstructions();
+    getUserInput(scanner);
+    printNumberOfLives();
+  }
 
-    private String returnCharacters(){
-        return this.game.returnCharacters();
-    }
+  private void printWelcomeMessage() {
+    System.out.println("Welcome to Hangman!");
+  }
 
-    private String returnWord() {
-        return this.game.returnWord();
-    }
+  private void printInstructions() {
+    printShowWord();
+    printTakeAGuess();
+  }
 
-    int returnLives(){
-        return this.game.returnLives();
-    }
+  private void printShowWord() {
+    System.out.println("The word is: " + returnCharacters());
+  }
 
-    private boolean isGameInProgress(){
-        return returnLives() >= 1;
-    }
+  private void printShowFullWord() {
+    System.out.println("The word was: " + returnWord());
+  }
 
-    boolean isGameWon(){
-        return this.game.isGameWon();
-    }
+  private void printTakeAGuess() {
+    System.out.println("Take a guess!");
+  }
 
-    boolean isGameLost(){
-        return this.game.isGameLost();
-    }
+  private void printWonGame() {
+    printShowFullWord();
+    System.out.println("You won!");
+  }
 
-    void playGameLoop(Scanner scanner){
-        startGame();
-        while (isGameInProgress()){
-            playGame(scanner);
-            if (isGameWon()){
-                printWonGame();
-                break;
-            }
-            if (isGameLost()) {
-                printLostGame();
-                break;
-            }
-        }
-    }
+  private void printLostGame() {
+    printShowFullWord();
+    System.out.println("You lost");
+  }
 
-      private void getUserInput(Scanner scanner){
-        String guess = scanner.next();
-        ByteArrayInputStream input = new ByteArrayInputStream(guess.getBytes());
-        takeGuess(input);
-    }
-
-    private void playGame(Scanner scanner) {
-        printInstructions();
-        getUserInput(scanner);
-        printNumberOfLives();
-    }
-
-    private void printWelcomeMessage(){
-        System.out.println("Welcome to Hangman!");
-    }
-
-    private void printInstructions(){
-        printShowWord();
-        printTakeAGuess();
-    }
-
-    private void printShowWord(){
-        System.out.println("The word is: " + returnCharacters() );
-    }
-
-    private void printShowFullWord(){
-        System.out.println("The word was: " + returnWord() );
-    }
-
-    private void printTakeAGuess(){
-        System.out.println("Take a guess!");
-    }
-
-    private void printWonGame(){
-        printShowFullWord();
-        System.out.println("You won!");
-    }
-
-    private void printLostGame(){
-        printShowFullWord();
-        System.out.println("You lost");
-    }
-
-    private void printNumberOfLives(){
-        System.out.println("You have " + this.game.returnLives() + " lives remaining.");
-    }
-
+  private void printNumberOfLives() {
+    System.out.println("You have " + this.game.returnLives() + " lives remaining.");
+  }
 }
